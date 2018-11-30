@@ -1,0 +1,50 @@
+spring: 
+    profiles: dev
+    resources:  
+      static-locations: classpath:/static/
+      
+    devtools: 
+      add-properties: true
+      livereload: 
+        enabled: true
+        
+    datasource: 
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql//192.168.202.21:3306/tocdb?autoReconnect=true
+      type: 
+      tomcat:
+        test-on-borrow: true
+        validation-query: select 1
+      username: pms
+      password: pms
+      
+name: development
+environment: development
+servers: 
+    - localhost
+    
+server: 
+  port: 8080
+  ssl: 
+    enable: false
+    
+management: 
+  endpoints: 
+    web: 
+      exposure: 
+        include: "*"
+
+  health: 
+    defaults: 
+      enabled: true  
+---
+spring: 
+    profiles: prod
+name: production
+environment: production
+servers:  
+    - localhost
+server: 
+  port: 8080
+  ssl: 
+    enable: false
